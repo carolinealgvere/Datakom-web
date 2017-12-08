@@ -1,0 +1,40 @@
+<!doctype html>  
+<html lang="en">
+        <head id="head">
+           <title>Group D Checkin</title>
+           <meta charset="utf-8"/>
+           <script type="text/javascript" src="app.js"></script>
+           <script>
+                docLoaded(indexPageLoaded);
+            </script>   
+       </head>
+       <link rel="stylesheet" type="text/css" href="/css/design.css">
+       <body>
+           <main>
+            <center>
+            <header>
+               <h1><span id="burger">Group D Checkin</h1>
+               <div id="crop">
+                      <img src="https://www.metoffice.gov.uk/binaries/content/gallery/mohippo/images/migrated-image/c/cirrus_clouds.jpg">
+               </div>
+            </header>      
+                <h2>You are checking in as </h2>
+                <h3 <p><%= name %></p> </h3>
+
+
+                <h3 <p><%= bookingNumber %></p> </h3>
+                <form action="flygplan.html">
+                    <button id="SelectSeatButton" type="submit">Select seat</button>
+                </form> 
+                     
+
+            </center>
+            </main>
+            </header>
+                    
+                   <script src="/jquery/dist/jquery.js"></script>
+                   <script src="/socket.io/socket.io.js"></script>
+                   <script src="/js/script.js"></script> 
+       </body>  
+       <footer>&copy; Group D</footer>     
+</html>
