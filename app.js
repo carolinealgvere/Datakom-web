@@ -40,12 +40,13 @@ app.post('/login',function(req,res){
 })
 
 app.post('/seatSelected', function(req,res){
+	//var seat = req.body.;
 	var seat = req.body.seat;
-	console.log(req.body);
+	console.log(req.body.seat);
 	res.render(__dirname +'/views/sida2', {
 		name:"funkar inte",
 		bookingNumber:"funkar inte",
-		seat: seat
+		seat:"Your seat is: "+ seat
 	});
 
 
