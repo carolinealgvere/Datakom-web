@@ -78,9 +78,13 @@ input[type=text], input[type=password] {
 #SelectSeatButton:hover {
     opacity: 0.8;
 }
+#planeButton{
+    padding: 8px 8px;
+}
 button:hover{
 	background-color: rgb(63, 167, 63);
-	cursor: pointer;
+    cursor: pointer;
+    padding: 8px 8px;
 }
 
 
