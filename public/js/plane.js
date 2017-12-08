@@ -15,12 +15,7 @@ function indexPageLoaded() {
 
 function DisplayItems(){
 
-    console.log("hej");
     var table = document.createElement('TABLE');
-    var form = document.createElement("FORM");
-    form.setAttribute("action", "/seatSelected");
-    form.setAttribute("method", "POST");
-    form.appendChild(table);
     var tr = document.createElement('TR');
     table.appendChild(tr);
     var i = 0;
@@ -50,20 +45,18 @@ function DisplayItems(){
 		        var td = document.createElement('TD');
 		        tr1.appendChild(td);
                 var button = document.createElement("button");
-                var id = "seat_" + k.toString() + n.toString();
-                button.setAttribute("name", id);
-                button.setAttribute("type", "submit");
-                //button.style.background='#007800'; 
+                button.setAttribute("name", "seat");
+               	var text = k.toString() + n.toString();
+               	button.setAttribute("value", text);
+               
+               
+                button.setAttribute("type", "submit");        
                 button.setAttribute("id", "planeButton"); 
-                button.addEventListener("click", pressed);             
+             
                 td.appendChild(button);
-                console.log(button.name);
             }
         }   
-    document.body.appendChild(form);
+    document.getElementById("seatForm").appendChild(table);
         
     }
-}
-function pressed(){
-    console.log("you clicked me");
 }
