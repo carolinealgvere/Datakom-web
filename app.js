@@ -22,16 +22,35 @@ app.post('/login',function(req,res){
 	console.log(req.body);
 	var bookingNumber = req.body.bnr;
 	var name = req.body.tholder;
+	var seat = "You have not selected a seat yet";
 	if (name == "hej" && bookingNumber == "123"){
 		res.render(__dirname +'/views/sida2', { 
 			name: "Name: " + name, 
-			bookingNumber: "Booking number: " + bookingNumber});
-		//res.sendFile(__dirname + '/views/sida2.ejs');	
-		//res.send(bookingNumber);
+			bookingNumber: "Booking number: " + bookingNumber,
+			seat: seat});
 	}
+	else if(name == "hello" && bookingNumber =="456")
+		res.render(__dirname +'/views/sida2', { 
+			name: "Name: " + name, 
+			bookingNumber: "Booking number: " + bookingNumber,
+			seat: seat});
 	else{
 		res.sendFile(__dirname +'/views/index.html');
 	}
+})
+
+app.post('/seatSelected', function(req,res){
+	var seat = req.body.seat;
+	console.log(req.body);
+	res.render(__dirname +'/views/sida2', {
+		name:"funkar inte",
+		bookingNumber:"funkar inte",
+		seat: seat
+	});
+
+
+
+
 })
 
 
