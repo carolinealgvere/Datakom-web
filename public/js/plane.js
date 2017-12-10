@@ -1,6 +1,5 @@
 function docLoaded(fn){
 	if(document.readyState !== 'loading'){
-		console.log("hejsan!");
 		fn();
 	} else{
 		document.addEventListener('DOMContentLoaded', fn);
@@ -8,9 +7,7 @@ function docLoaded(fn){
 }
 
 function indexPageLoaded() {
-	console.log("Du är i funktionen hello.");
 	DisplayItems();
-
 }
 
 function DisplayItems(){
@@ -40,23 +37,60 @@ function DisplayItems(){
         } else{
             var tr1 = document.createElement('TR');
             table.appendChild(tr1);
-            var n = 0;
-	        for(n; n < 30; n++){
+            var n = 1;
+	        for(n; n < 31; n++){
 		        var td = document.createElement('TD');
 		        tr1.appendChild(td);
                 var button = document.createElement("button");
                 button.setAttribute("name", "seat");
-               	var text = k.toString() + n.toString();
+                var text = k.toString() + n.toString();
+                var OBS = "OBS! You have selected a seat which requires you to open emergency doors in case of energancy. Hence if you are traveling with child, have a disability etc. please select a new seat.";
+                if(text.charAt(0) == 0){
+                    if(text.charAt(1)==1 && (text.charAt(2)==3 || text.charAt(2)==4 || text.charAt(2)==5)){
+                        text = n.toString() + "A"+ "\n" + OBS;
+                        console.log("du klickade rätt iaf"); 
+                    }else{
+                        text = n.toString() + "A"; 
+                    }                   
+                }else if(text.charAt(0) == 1){
+                    if(text.charAt(1)==1 && (text.charAt(2)==3 || text.charAt(2)==4 || text.charAt(2)==5)){
+                        text = n.toString()  +"B"  + OBS; 
+                    }else{
+                        text = n.toString() + "B"; 
+                    }                   
+                }else if(text.charAt(0) == 2){
+                    if(text.charAt(1)==1 && (text.charAt(2)==3 || text.charAt(2)==4 || text.charAt(2)==5)){
+                        text = n.toString() + "C" + OBS; 
+                    }else{
+                        text = n.toString() + "C"; 
+                    }
+                }else if(text.charAt(0) == 4){
+                    if(text.charAt(1)==1 && (text.charAt(2)==3 || text.charAt(2)==4 || text.charAt(2)==5)){
+                        text = n.toString() + "D" + OBS; 
+                    }else{
+                        text = n.toString() + "D"; 
+                    }        
+                }else if(text.charAt(0) == 5){
+                    if(text.charAt(1)==1 && (text.charAt(2)==3 || text.charAt(2)==4 || text.charAt(2)==5)){
+                        text = n.toString() + "E" + OBS; 
+                    }else{
+                        text = n.toString() + "E"; 
+                    }        
+                }else if(text.charAt(0) == 6){
+                    if(text.charAt(1)==1 && (text.charAt(2)==3 || text.charAt(2)==4 || text.charAt(2)==5)){
+                        text = n.toString() + "F" + OBS; 
+                    }else{
+                        text = n.toString() + "F"; 
+                    }        
+                }else{
+                   text = k.toString() + n.toString();
+            }
                	button.setAttribute("value", text);
-               
-               
                 button.setAttribute("type", "submit");        
                 button.setAttribute("id", "planeButton"); 
-             
                 td.appendChild(button);
             }
         }   
-    document.getElementById("seatForm").appendChild(table);
-        
+    document.getElementById("seatForm").appendChild(table);  
     }
 }
