@@ -60,7 +60,10 @@ app.post('/login',function(req,res){
 		res.render(__dirname +'/views/sida2', { 
 			name: "Name: " + name, 
 			bookingNumber: "Booking number: " + bookingNumber,
-			seat: seat});
+			seat: seat,
+			OBS: ""
+
+		});
 			
     }	
   });
@@ -71,8 +74,12 @@ app.post('/login',function(req,res){
 app.post('/seatSelected', function(req,res){
 	
 	var seat = req.body.seat;
+	console.log(seat.charAt(0));
+	console.log(seat.charAt(1));
+	console.log(seat.charAt(2));
 	console.log(req.body.seat);
 	var sql1 = 'SELECT * FROM sys.Seats WHERE seat =? AND Taken =?';
+	var OBS = "OBS! You have selected a seat which requires you to open emergency doors in case of energancy. Hence if you are traveling with child, have a disability etc. please select a new seat.";
 	con.query(sql1, [seat, 0],function (err,result,fields){
 		if (err) throw err;
 
@@ -81,10 +88,6 @@ app.post('/seatSelected', function(req,res){
 	1. Vi måste lägga till så att den förra stolen personen satt på ändras tillbaka till Taken=0 och bookingnumber = null
 	2. Vi måste lägga till så att det är den inloggade personens bokningsnummer som läggs in och inte "1000"
 	*/
-
-
-
-
 	if(result.length){
 		var sql2 = "UPDATE sys.Seats SET bookingNumber = ? WHERE seat = ?";
 		con.query(sql2, [1000,seat] , function(err, result){
@@ -95,11 +98,24 @@ app.post('/seatSelected', function(req,res){
 	con.query(sql3, [1,seat] , function(err, result){
 		if (err) throw err;
 	});
-	res.render(__dirname +'/views/sida2', {
-		name:"funkar inte",
-		bookingNumber:"funkar inte",
-		seat:"Your seat is: "+ seat
-	});
+		if(seat.charAt(1) == 1 && (seat.charAt(2) == (3||4||5))){
+			res.render(__dirname +'/views/sida2', {
+
+				name:"funkar inte",
+				bookingNumber:"funkar inte",
+				seat:"Your seat is: "+ seat,
+				OBS : ""+OBS
+			});
+		}
+		else{
+			res.render(__dirname +'/views/sida2', {
+
+				name:"funkar inte",
+				bookingNumber:"funkar inte",
+				seat:"Your seat is: "+ seat,
+				OBS :""
+			});	
+		}
 
 	}
 	else{
