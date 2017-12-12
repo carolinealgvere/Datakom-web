@@ -26,9 +26,13 @@
                 <h3 <p><%= bookingNumber %></p> </h3>
                 <h3 <p><%= seat %></p> </h3>
                 <h3 <p><%= OBS %></p> </h3>
-                <form action="flygplan.html">
+                <form action="/selectSeat" method="post">
                     <button id="SelectSeatButton" type="submit">Select seat</button>
                 </form> 
+
+                <form action="/logOut" method="post">
+                    <button id="logOutButton" type="submit"> Log out</button>
+                </form>
                      
 
             </center>
