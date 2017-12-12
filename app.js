@@ -36,6 +36,7 @@ app.use(session({
 
 }))
 
+
  // app.use(express.cookieParser());
   //app.use(express.bodyParser());
   //app.use(express.cookieSession()); 
@@ -89,6 +90,18 @@ app.post('/login',function(req,res){
 
 
 
+app.post('/selectSeat', function(req,res){
+	res.render(__dirname + '/views/flygplan',{
+		error: ""
+	});
+})
+
+app.post('/logOut', function(req,res){
+	req.session.destroy();
+	res.sendFile(__dirname +'/views/index.html');
+});
+
+
 app.post('/seatSelected', function(req,res){
 	
 	console.log(req.session.user);
@@ -128,8 +141,11 @@ app.post('/seatSelected', function(req,res){
 	}
 	else{
 		console.log("Seat alredy taken");
+		res.render(__dirname + '/views/flygplan', {
+			error: "Seat alredy taken, please select another seat!"
+		});
 
-		res.sendFile(__dirname +'/views/flygplan.html');
+
 	}
 	});
 })
